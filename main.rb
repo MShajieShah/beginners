@@ -83,16 +83,16 @@ end
 
 # => Problem #31
 #Write a Ruby program to retrieve the total marks where subject name and marks of a student stored in a hash. Go to the editor
-#Sample subject and marks : Literature -74, Science – 89, Math-91//
+#Sample subject and marks : Literature -74, Science – 89, Math-91
 
 subj = {
     'lit' => 74 ,
-    'Sci' => 89 ,
+    'sci' => 89 ,
     'mat' => 91 ,
 
 }
 
-res = subj.values.inject { |key, values| key + values }
+res = subj.values.inject { |memo, n| memo + n }
 puts  "Total Marks: " + res.to_s
 
 
@@ -112,15 +112,19 @@ puts leap?(2020)
 # => Problem #35
 #Write a Ruby program to create a string using the first two characters (if present) of a given string if the first character is 'p' and second one is 's' otherwise return a blank string
 
-print "Enter char "
-char = gets.chomp
-
-if temp[0] == 'p' && temp[1] == 's'
-    print temp
-else 
-    return nil
-
+def txt(str)
+   len = str.length();
+   temp = "";
+    if(len >= 3)
+       if(str.slice(0) == 'p') || (str.slice(1) == 's')
+            temp =str.slice(0) + str.slice(1);
+        end 
+    else
+        return temp;
+    end
 end
+puts txt("psabcd")
+puts txt("abcd")
 
 
 # => Problem #36
@@ -159,7 +163,6 @@ puts str(5,7)
 def array_count (arry)
     arry.count do |e|
         e == 5
-
     end
 end
 puts array_count([1, 2, 9])
@@ -169,10 +172,9 @@ puts array_count([1, 2, 5, 9, 5])
 # => Problem #42
 #Write a Ruby program to check whether one of the first 5 elements in a given array of integers is a 7. The array length may be less than 5.
 
-def array_count (arry)
-    arry.count do |e|
+def array_count (arr)
+    arr.count do |e|
         e == 7
-
     end
 end
 puts array_count([1, 2, 9])
@@ -190,20 +192,20 @@ def str (q,w)
     a= (q /5)
     b=  (w / 5)
 
-    if a<b
+    if a < b
         puts w
 
     else
 
-        if b<a
+        if b < a
             puts q 
 
-        else a==b
-         return 0
+        else a == b        
+            return 0
 
-     end
+        end
 
- end
+    end
 end
 
 puts str(9,12)

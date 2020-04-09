@@ -176,10 +176,19 @@ def array_count (arr)
     arr.count do |e|
         e == 7
     end
+    if arr.length < 5
+        if arr.include?(7)
+                return true
+        else
+                return false
+        end
+    else
+        return false
+    end
 end
 puts array_count([1, 2, 9])
 puts array_count([1, 2, 7, 9])
-puts array_count([1, 2, 7, 9, 7])
+puts array_count([1, 2, 2, 9, 2,8,7])
 
 
 
@@ -187,25 +196,17 @@ puts array_count([1, 2, 7, 9, 7])
 #Write a Ruby program to check two given integers and return the larger value. However if the two values have the same remainder when divided by 5 then return the smaller value and if the two values are the same, return 0. 
 
 
-def str (q,w)
+def str (a,b)
 
-    a= (q /5)
-    b=  (w / 5)
-
-    if a < b
-        puts w
-
-    else
-
-        if b < a
-            puts q 
-
-        else a == b        
+    if (a == b)        
             return 0
-
-        end
-
     end
+
+    if (a % 5 == b % 5)
+        return a < b ? a:b
+    end
+        return a > b ? a:b
+
 end
 
 puts str(9,12)

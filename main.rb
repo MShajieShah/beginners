@@ -131,18 +131,18 @@ puts txt("abcd")
 #Write a Ruby program to check two integers and return whichever value is nearest to the value 10, or return 0 if two integers are equal.
 
 
-def str (q,w)
+def closest_num (q,w)
 
-    a= (10/q)
-    b= (10/w)
+    a= (10 - q).abs
+    b= (10 - w).abs
 
-    if a<b
-        puts q
+    if a < b
+        puts a
 
     else
 
-        if a>b
-            puts w 
+        if a >b
+            puts b 
 
         else a==b
             return 0
@@ -152,9 +152,9 @@ def str (q,w)
     end
 end
 
-puts str(5,5)
-puts str(5,9)
-puts str(5,7)
+puts closest_num(5,5)
+puts closest_num(9,10)
+puts closest_num(5,7)
 
 
 
@@ -172,23 +172,17 @@ puts array_count([1, 2, 5, 9, 5])
 # => Problem #42
 #Write a Ruby program to check whether one of the first 5 elements in a given array of integers is a 7. The array length may be less than 5.
 
-def array_count (arr)
-    arr.count do |e|
-        e == 7
-    end
-    if arr.length < 5
-        if arr.include?(7)
-                return true
-        else
-                return false
-        end
+def is_array_includes_five?(arr)
+    if arr.length > 5
+        b = arr.slice(0,5)
+        b.include?(7)
     else
-        return false
+        arr.include?(7)
     end
 end
-puts array_count([1, 2, 9])
-puts array_count([1, 2, 7, 9])
-puts array_count([1, 2, 2, 9, 2,8,7])
+puts is_array_includes_five?([1, 2, 9])
+puts is_array_includes_five?([1, 2, 7, 9])
+puts is_array_includes_five?([1, 2, 2, 7, 2,8,7])
 
 
 
@@ -196,21 +190,16 @@ puts array_count([1, 2, 2, 9, 2,8,7])
 #Write a Ruby program to check two given integers and return the larger value. However if the two values have the same remainder when divided by 5 then return the smaller value and if the two values are the same, return 0. 
 
 
-def str (a,b)
-
-    if (a == b)        
-            return 0
-    end
-
+def check_largest_no_against_rem(a, b)
+    larger = a > b ? a : b
+    
     if (a % 5 == b % 5)
-        return a < b ? a:b
+        return larger
+    elsif a == b
+        return 0
     end
-        return a > b ? a:b
-
 end
-
-puts str(9,12)
-puts str(110,200)
-puts str(10,10)
+    puts check_largest_no_against_rem(110,200)
+    puts check_largest_no_against_rem(10,10)
 
 

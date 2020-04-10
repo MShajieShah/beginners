@@ -137,18 +137,14 @@ def closest_num (q,w)
     b= (10 - w).abs
 
     if a < b
-        puts a
+        print q
 
+    elsif b < a
+            print w 
+    
     else
-
-        if a >b
-            puts b 
-
-        else a==b
             return 0
-
-        end
-
+    
     end
 end
 
@@ -172,7 +168,7 @@ puts array_count([1, 2, 5, 9, 5])
 # => Problem #42
 #Write a Ruby program to check whether one of the first 5 elements in a given array of integers is a 7. The array length may be less than 5.
 
-def is_array_includes_five?(arr)
+def is_array_includes_seven?(arr)
     if arr.length > 5
         b = arr.slice(0,5)
         b.include?(7)
@@ -180,9 +176,9 @@ def is_array_includes_five?(arr)
         arr.include?(7)
     end
 end
-puts is_array_includes_five?([1, 2, 9])
-puts is_array_includes_five?([1, 2, 7, 9])
-puts is_array_includes_five?([1, 2, 2, 7, 2,8,7])
+puts is_array_includes_seven?([1, 2, 9])
+puts is_array_includes_seven?([1, 2, 7, 9])
+puts is_array_includes_seven?([1, 2, 2, 7, 2,8,7])
 
 
 
@@ -203,3 +199,64 @@ end
     puts check_largest_no_against_rem(10,10)
 
 
+# => Problem #7
+#Write a Ruby program to accept a filename from the user print the extension of that. 
+print "Enter File : "
+file = gets.chomp
+fextn = File.extname file   
+puts "Extention Of The File Is: "+fextn
+
+
+
+# => Problem #30
+# Write a Ruby program to check two non-negative integer values and return true if they have the same last digit.
+
+def same_last_digit(a, b)
+    (a % 10 == b % 10)
+end
+
+puts same_last_digit(1,2)
+puts same_last_digit(5,5)
+puts same_last_digit(26,46)
+puts same_last_digit(26,34)
+
+
+# => Problem #37
+#Write a Ruby program to check two integer values and return true if they are both in the range 10..20 inclusive, or they are both in the range 20..30 inclusive.
+def check_two_integer_values?(a,b)
+    return (((10..20).include?(a) && (10..20).include?(b)) || ((20..30).include?(a) && (20..30).include?(b)));
+
+end
+
+puts check_two_integer_values?(5,13)
+puts check_two_integer_values?(20,15)
+
+
+
+# => Problem #43
+#Write a Ruby program to check whether the sequence of numbers 10, 20, 30 appears anywhere in a given array of integers.
+
+def check_integer_values?(number , *args)
+    array = [10,20,30]
+    array.any? { |e| e == number }
+
+end
+
+puts check_integer_values?(10,2,3,4,5)
+puts check_integer_values?(20)
+puts check_integer_values?(2,3,4,5,67)
+
+
+
+# => Problem #13
+#Write a Ruby program to create a new string from a given string using the first three characters or whatever is there if the string is less than length 3. Return n copies of the string.
+
+def using_first_three_characters(str,n)
+     str.length < 3 ? str*n : str[0..2]*n
+end
+
+    print "Enter Number of copies: "
+    n = gets.chomp
+puts using_first_three_characters('abcdefg', n.to_i )
+puts using_first_three_characters('abcdefg',n.to_i )
+puts using_first_three_characters('ab', n.to_i)

@@ -173,7 +173,7 @@ def is_array_includes_seven?(arr)
         b = arr.slice(0,5)
         b.include?(7)
     else
-        arr.include?(7)
+        arr.include?(7)                                           #Provided By Moiz
     end
 end
 puts is_array_includes_seven?([1, 2, 9])
@@ -191,7 +191,7 @@ def check_largest_no_against_rem(a, b)
     
     if (a % 5 == b % 5)
         return larger
-    elsif a == b
+    elsif a == b                                                    #Provided BY Moiz
         return 0
     end
 end
@@ -223,40 +223,43 @@ puts same_last_digit(26,34)
 
 # => Problem #37
 #Write a Ruby program to check two integer values and return true if they are both in the range 10..20 inclusive, or they are both in the range 20..30 inclusive.
-def check_two_integer_values?(a,b)
+def is_numbers_within_range?(a,b)
     return (((10..20).include?(a) && (10..20).include?(b)) || ((20..30).include?(a) && (20..30).include?(b)));
 
 end
 
-puts check_two_integer_values?(5,13)
-puts check_two_integer_values?(20,15)
+puts is_numbers_within_range?(5,13)
+puts is_numbers_within_range?(20,15)
 
 
 
 # => Problem #43
 #Write a Ruby program to check whether the sequence of numbers 10, 20, 30 appears anywhere in a given array of integers.
 
-def check_integer_values?(number , *args)
-    array = [10,20,30]
-    array.any? { |e| e == number }
-
+arr = [1,2,3,10,20,30,4,5]
+arr.each_with_index do |value, index|
+puts index
+if value == 10
+flag = (arr[index+1] == 20 && arr[index+2] == 30)             #Provided By
+next unless flag == true
+puts 'Sequence detected'
+break
 end
-
-puts check_integer_values?(10,2,3,4,5)
-puts check_integer_values?(20)
-puts check_integer_values?(2,3,4,5,67)
+end 
 
 
 
 # => Problem #13
 #Write a Ruby program to create a new string from a given string using the first three characters or whatever is there if the string is less than length 3. Return n copies of the string.
 
-def using_first_three_characters(str,n)
-     str.length < 3 ? str*n : str[0..2]*n
+def form_string_and_return_copies(str, n)
+if str.length < 3
+new_str = "my_#{str}"
+puts new_str
 end
-
-    print "Enter Number of copies: "
-    n = gets.chomp
-puts using_first_three_characters('abcdefg', n.to_i )
-puts using_first_three_characters('abcdefg',n.to_i )
-puts using_first_three_characters('ab', n.to_i)
+str*n
+end                                                                 #Provided By Moiz
+    
+puts form_string_and_return_copies('abcdefg', 2 )
+puts form_string_and_return_copies('abcdefg',3)
+puts form_string_and_return_copies('ab', 5)

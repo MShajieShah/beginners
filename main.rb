@@ -21,7 +21,6 @@ puts res
 
 def rang (a,b)
     return (20..30).include?(a) || (20..30).include?(b)
-
 end
 
 puts rang(5,3)
@@ -32,7 +31,6 @@ puts rang(0,2)
 #Write a Ruby program to check three numbers and return true if one or more of them are small. A number is called "small" if it is in the range 1..10 inclusive.//
 def rang (a,b,c)
     return (10..20).include?(a) || (10..20).include?(b) || (10..20).include?(c)
-
 end
 
 puts rang(1,31,41)
@@ -113,10 +111,10 @@ puts leap?(2020)
 #Write a Ruby program to create a string using the first two characters (if present) of a given string if the first character is 'p' and second one is 's' otherwise return a blank string
 
 def txt(str)
-   len = str.length();
-   temp = "";
+        len = str.length();
+        temp = "";
     if(len >= 3)
-       if(str.slice(0) == 'p') || (str.slice(1) == 's')
+        if(str.slice(0) == 'p') || (str.slice(1) == 's')
             temp =str.slice(0) + str.slice(1);
         end 
     else
@@ -135,16 +133,12 @@ def closest_num (q,w)
 
     a= (10 - q).abs
     b= (10 - w).abs
-
     if a < b
         print q
-
     elsif b < a
-            print w 
-    
+        print w 
     else
-            return 0
-    
+        return 0
     end
 end
 
@@ -188,15 +182,14 @@ puts is_array_includes_seven?([1, 2, 2, 7, 2,8,7])
 
 def check_largest_no_against_rem(a, b)
     larger = a > b ? a : b
-    
     if (a % 5 == b % 5)
         return larger
     elsif a == b                                                    #Provided BY Moiz
         return 0
     end
 end
-    puts check_largest_no_against_rem(110,200)
-    puts check_largest_no_against_rem(10,10)
+puts check_largest_no_against_rem(110,200)
+puts check_largest_no_against_rem(10,10)
 
 
 # => Problem #7
@@ -225,7 +218,6 @@ puts same_last_digit(26,34)
 #Write a Ruby program to check two integer values and return true if they are both in the range 10..20 inclusive, or they are both in the range 20..30 inclusive.
 def is_numbers_within_range?(a,b)
     return (((10..20).include?(a) && (10..20).include?(b)) || ((20..30).include?(a) && (20..30).include?(b)));
-
 end
 
 puts is_numbers_within_range?(5,13)
@@ -238,9 +230,9 @@ puts is_numbers_within_range?(20,15)
 
 arr = [1,2,3,10,20,30,4,5]
 arr.each_with_index do |value, index|
-puts index
-if value == 10
-flag = (arr[index+1] == 20 && arr[index+2] == 30)             #Provided By
+    puts index
+    if value == 10
+flag = (arr[index+1] == 20 && arr[index+2] == 30)             #Provided By Moiz
 next unless flag == true
 puts 'Sequence detected'
 break
@@ -253,13 +245,13 @@ end
 #Write a Ruby program to create a new string from a given string using the first three characters or whatever is there if the string is less than length 3. Return n copies of the string.
 
 def form_string_and_return_copies(str, n)
-if str.length < 3
-new_str = "my_#{str}"
-puts new_str
-end
-str*n
+    if str.length < 3
+        new_str = "my_#{str}"
+        puts new_str
+    end
+    str*n
 end                                                                 #Provided By Moiz
-    
+
 puts form_string_and_return_copies('abcdefg', 2 )
 puts form_string_and_return_copies('abcdefg',3)
 puts form_string_and_return_copies('ab', 5)

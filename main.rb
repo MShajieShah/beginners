@@ -230,15 +230,14 @@ puts is_numbers_within_range?(20,15)
 
 arr = [1,2,3,10,20,30,4,5]
 arr.each_with_index do |value, index|
-    puts index
-    if value == 10
-flag = (arr[index+1] == 20 && arr[index+2] == 30)             #Provided By Moiz
+puts index
+if value == 10
+flag = (arr[index+1] == 20 && arr[index+2] == 30)       #provided By Moiz
 next unless flag == true
 puts 'Sequence detected'
 break
 end
-end 
-
+end
 
 
 # => Problem #13

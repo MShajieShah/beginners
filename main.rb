@@ -72,9 +72,9 @@ end
 # => Problem #10
 # Write a Ruby program to split a delimited string into an array.
 
-color = "Red, Green, Blue, White"
+color_string = "Red, Green, Blue, White"
 n = "1, 3, 4, 5, 7"
-print color.split(',') , "\n"
+print color_string.split(',') , "\n"
 print n.split(",").map { |s| s.to_i }, "\n"
 
 # => Problem #11
@@ -100,17 +100,12 @@ print elements_in_reverse_order([1,2,3]) , "\n"
 
 # => Problem #13
 # Write a Ruby program to find the larger between the first and last elements of a given array of integers of length 3. Replace all the other values to be that value. Return the changed array.
-def find_larger_number(a)
-	b = []
-	b[0] = a[0]
-	if(a[2] >= b[0])
-		b[0] = a[2]
-		b[1] = b[0]
-		b[2] = b[0]
-	end
-	return b
+ def find_larger_number(arr)
+larger = arr.first > arr.last ? arr.first : arr.last
+arr[1] = larger
+return arr
 end
-print find_larger_number([1, 2, 3]),"\n" 
+print find_larger_number([1, 2, 1]),"\n" 
 print find_larger_number([1, 2, 4]),"\n" 
 print find_larger_number([1, 2, 5])
 
@@ -120,8 +115,10 @@ print find_larger_number([1, 2, 5])
 def middle(first,second)
 	a = first.sort
 	b = second.sort
-	if (a.length) %2 != 0 || (b.length) %2 != 0
-		return [a[(a.length)/2] , b[(b.length)/2]];
+	if first.length > 3 || second.length > 3
+		puts "no greater than three"
+	elsif (a.length) %2 != 0 || (b.length) %2 != 0
+		return a[(a.length)/2] , b[(b.length)/2]
 	end
 
 end
@@ -140,28 +137,27 @@ print a.flatten! , "\n"
 # => Problem #19
 #Write a Ruby program to check whether a given array of integers contains 3 twice, or 5 twice. The array will be length 0, 1, or 2.
 
-def check_integers_3twice_5twice?(nums)
-	if(nums.length == 2)
-	(nums[0] == 3 && nums[1] == 3) || (nums[0] == 5 && nums[1] == 5)
+def check_integers?(nums)
+	if nums.length == 2
+	nums[0] == 3 && nums[1] == 3 || nums[0] == 5 && nums[1] == 5
 	end
 end
 
-puts check_integers_3twice_5twice?([1, 1]) 
-puts check_integers_3twice_5twice?([2, 2]) 
-puts check_integers_3twice_5twice?([3, 3]) 
-puts check_integers_3twice_5twice?([5, 5])   
-puts check_integers_3twice_5twice?([8, 8])
+puts check_integers?([1, 1]) 
+puts check_integers?([2, 2]) 
+puts check_integers?([3, 3]) 
+puts check_integers?([5, 5])   
+puts check_integers?([8, 8])
 
 
 # => Problem #28
 #Write a Ruby program to create a new array with the first element of two arrays. If length of any array is 0, ignore that array.
 def check_array(a, b)
-	front = []
-	if(a.length > 0 && b.length > 0)
+	if a.length > 0 && b.length > 0
+		front = []
 		return front = a[0] , b[0]
-	else (a.length < 0 && b.length < 0)
-		front = a[0],b[0]
-		return front.compact
+	else
+		puts "One of your array length is zero"
 	end
 end
 

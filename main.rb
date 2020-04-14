@@ -120,6 +120,13 @@ end
 print middle([1,2,4],[3,4,5,5]) , "\n"
 
 
+# def middle(first,second)
+# 	if first.length == 3 || second.length == 3
+# 		return first[(first.length)/2] , second[(second.length)/2]
+# 	end
+# end
+# print middle([1,2,4],[3,4,5]) , "\n"
+
 
 # => Problem #16
 # Write a Ruby program to concatenate array of arrays into one.

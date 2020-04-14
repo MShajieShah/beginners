@@ -100,10 +100,10 @@ print elements_in_reverse_order([1,2,3]) , "\n"
 
 # => Problem #13
 # Write a Ruby program to find the larger between the first and last elements of a given array of integers of length 3. Replace all the other values to be that value. Return the changed array.
- def find_larger_number(arr)
-larger = arr.first > arr.last ? arr.first : arr.last
-arr[1] = larger
-return arr
+def find_larger_number(arr)
+	larger = arr.first > arr.last ? arr.first : arr.last
+	arr[1] = larger
+	return arr
 end
 print find_larger_number([1, 2, 1]),"\n" 
 print find_larger_number([1, 2, 4]),"\n" 
@@ -113,16 +113,12 @@ print find_larger_number([1, 2, 5])
 #Write a Ruby program to create an array of length 2 containing their middle elements from two given arrays of integers of length 3.
 
 def middle(first,second)
-	a = first.sort
-	b = second.sort
-	if first.length > 3 || second.length > 3
-		puts "no greater than three"
-	elsif (a.length) %2 != 0 || (b.length) %2 != 0
-		return a[(a.length)/2] , b[(b.length)/2]
+	if first.length == 3 || second.length == 3
+		return first[(first.length)/2] , second[(second.length)/2]
 	end
-
 end
-print middle([1,2,4,678,7],[1,2,3]) , "\n"
+print middle([1,2,4],[3,4,5]) , "\n"
+
 
 
 # => Problem #16
@@ -139,7 +135,7 @@ print a.flatten! , "\n"
 
 def check_integers?(nums)
 	if nums.length == 2
-	nums[0] == 3 && nums[1] == 3 || nums[0] == 5 && nums[1] == 5
+		nums[0] == 3 && nums[1] == 3 || nums[0] == 5 && nums[1] == 5
 	end
 end
 

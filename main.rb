@@ -128,7 +128,6 @@ print middle([1,2,4],[3,4,5,5]) , "\n"
 # print middle([1,2,4],[3,4,5]) , "\n"
 
 
-
 # => Problem #16
 # Write a Ruby program to concatenate array of arrays into one.
 a=[1,2,3,[4,[5,6]]]

@@ -183,3 +183,47 @@ end
 puts diff_between_largest_and_smallest_value [1,2,3]
 puts diff_between_largest_and_smallest_value []
 
+# => Problem #37
+# Write a Ruby program to check whether a given value appears everywhere in a given array. A value is everywhere in an array if it presents for every pair of adjacent elements in the array.
+
+def check_duplicates?(arr)
+	return arr.uniq.length <= arr.length
+end
+puts check_duplicates?([2, 8, 2, 9])
+puts check_duplicates?([3, 8, 5, 4, 3, 7]) ## not cover after adjacent elements
+
+
+# => Problem #42
+#Write a Ruby program to convert an array into an index hash.
+num = [10, 20, 30, 40]
+print "Original array:\n"
+print nums
+print "\nIndex Hash:\n"
+print Hash[nums.zip]
+
+# => Problem #43
+#Write a Ruby program to find most occurred item in a given array.
+nums = [10, 20, 30, 40]
+print "Original array:\n"
+print nums
+print "\nIndex Hash:\n"
+print nums.each_with_index.to_h
+
+# 	Problem #48
+# Write a Ruby program to sort a given array of strings by length.
+arr =  ["abcde", "abdf", "adeab", "abdgeee", "bdefa", "abc", "ab", "a", "bacdef"]
+print "original array",arr , "\n"
+a = arr.sort_by {|x| x.length}
+print "Sorted array", a ,"\n"
+
+
+# 	Problem #45
+# Write a Ruby program to search items start with specified string of a given array.
+arr = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
+print "Original array:"
+print arr ,"\n"
+print "items start with 'ab': "
+print arr.grep(/^ab/) , "\n"
+print "items start with 'b': "
+print arr.grep(/^b/), "\n"
+

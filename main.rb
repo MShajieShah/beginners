@@ -195,35 +195,37 @@ puts check_duplicates?([3, 8, 5, 4, 3, 7]) ## not cover after adjacent elements
 
 # => Problem #42
 #Write a Ruby program to convert an array into an index hash.
-num = [10, 20, 30, 40]
-print "Original array:\n"
-print nums
-print "\nIndex Hash:\n"
-print Hash[nums.zip]
+nums = [10, 20, 30, 40]
+puts "Original array: #{nums}"
+puts "Index Hash: #{nums.map.with_index(1) { |int, idx| [idx, int]} }"
 
 # => Problem #43
 #Write a Ruby program to find most occurred item in a given array.
-nums = [10, 20, 30, 40]
-print "Original array:\n"
-print nums
-print "\nIndex Hash:\n"
-print nums.each_with_index.to_h
+def list_duplicates?(arr)
+
+	if	arr.uniq.length != arr.length
+		a = arr.select { |e| arr.count(e) > 1 }
+		puts "Items reoccured #{a.uniq}"
+	else
+		puts "Already sorted #{arr}"
+
+	end
+end
+puts list_duplicates?([3, 5, 4 ])
+
 
 # 	Problem #48
 # Write a Ruby program to sort a given array of strings by length.
 arr =  ["abcde", "abdf", "adeab", "abdgeee", "bdefa", "abc", "ab", "a", "bacdef"]
-print "original array",arr , "\n"
+puts "original array #{arr}"
 a = arr.sort_by {|x| x.length}
-print "Sorted array", a ,"\n"
+puts "Sorted array #{a}"
 
 
 # 	Problem #45
 # Write a Ruby program to search items start with specified string of a given array.
 arr = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
-print "Original array:"
-print arr ,"\n"
-print "items start with 'ab': "
-print arr.grep(/^ab/) , "\n"
-print "items start with 'b': "
-print arr.grep(/^b/), "\n"
+puts "Original array: #{arr}"
+puts "items start with 'ab':  #{arr.grep(/^ab/)}"
+puts "items start with 'b':  #{arr.grep(/^b/)}"
 

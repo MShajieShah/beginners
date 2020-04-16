@@ -206,7 +206,7 @@ puts "#{a}"
 def list_duplicates?(arr)
 	if arr.uniq.length != arr.length
 		a = arr.select { |e| arr.count(e) > 1 }
-		puts "Items Value repeated is #{a.uniq} buy n times"
+		puts "Items Value repeated is #{a.uniq} by #{a.count} times"
 	else
 		puts "Your array has no repeated value#{arr}"
 	end
@@ -228,4 +228,78 @@ arr = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
 puts "Original array: #{arr}"
 puts "items start with 'ab':  #{arr.grep(/^ab/)}"
 puts "items start with 'b':  #{arr.grep(/^b/)}"
+
+
+
+
+
+#Method Map and Inject 
+
+
+array = ["11", "21", "5"]
+array.map { |str| str.to_i }
+
+
+array = ["a", "b", "c"]
+array.map { |string| string.upcase }
+
+
+
+a = [18, 22, 33, 3, 5, 6] 
+b = [1, 4, 1, 1, 88, 9] 
+c = [18, 22, 3, 3, 50, 6]  
+puts "map method : #{a.map {|num| num > 10 }}"
+puts "map method : #{b.map {|x| x.odd? }}"
+
+
+
+
+
+hash = { bacon: "protein", apple: "fruit" }
+hash.map { |k,v| [k, v.to_sym] }
+
+
+
+
+nums = [10, 20, 30, 40]
+a = nums.map.with_index(1){ |value, idx| [idx,value]}]
+puts "#{a}"
+
+
+
+
+
+
+#inject
+
+
+a = ["bar","baz","quux"].inject("foo") {|a,b| a + "!!" + b }
+puts a
+
+
+
+a =   (1..8).each_with_object([]) { |n,sq| sq << n*n }.inject(0,:+)
+  puts a
+
+
+
+longest = %w{ cat sheep bear }.inject do |a, b|
+   a.length > b.length ? a : b
+end
+longest 
+
+
+
+
+  def list_duplicates?(arr)
+	if arr.uniq.length != arr.length
+		a = arr.inject(Hash.new (0)){ |hash, key| hash[key] =+1; hash  }
+		puts "Items Value repeated is #{a}"
+	else
+		puts "Your array has no repeated value #{arr} "
+	end
+end
+puts list_duplicates?([3,5,4,3])
+
+
 

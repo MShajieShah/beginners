@@ -197,21 +197,21 @@ puts check_duplicates?([3, 8, 5, 4, 3, 7]) ## not cover after adjacent elements
 #Write a Ruby program to convert an array into an index hash.
 nums = [10, 20, 30, 40]
 puts "Original array: #{nums}"
-puts "Index Hash: #{nums.map.with_index(1) { |int, idx| [idx, int]} }"
+puts "Index Hash: "
+a = Hash[nums.map.with_index(1){ |value, idx| [idx,value]}]
+puts "#{a}"
 
 # => Problem #43
 #Write a Ruby program to find most occurred item in a given array.
 def list_duplicates?(arr)
-
-	if	arr.uniq.length != arr.length
+	if arr.uniq.length != arr.length
 		a = arr.select { |e| arr.count(e) > 1 }
-		puts "Items reoccured #{a.uniq}"
+		puts "Items Value repeated is #{a.uniq} buy n times"
 	else
-		puts "Already sorted #{arr}"
-
+		puts "Your array has no repeated value#{arr}"
 	end
 end
-puts list_duplicates?([3, 5, 4 ])
+puts list_duplicates?([3,5,4])
 
 
 # 	Problem #48

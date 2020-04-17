@@ -243,6 +243,14 @@ array.map { |str| str.to_i }
 array = ["a", "b", "c"]
 array.map { |string| string.upcase }
 
+[1,2,3,4,5].map { |a|
+puts  (a == 2) ? a * a : a
+}
+
+array = [1,2,3,4,5]
+a= array.map {|n| n+1}
+puts "#{array}"
+puts "#{a}"
 
 
 a = [18, 22, 33, 3, 5, 6] 
@@ -252,23 +260,13 @@ puts "map method : #{a.map {|num| num > 10 }}"
 puts "map method : #{b.map {|x| x.odd? }}"
 
 
-
-
-
 hash = { bacon: "protein", apple: "fruit" }
 hash.map { |k,v| [k, v.to_sym] }
-
-
 
 
 nums = [10, 20, 30, 40]
 a = nums.map.with_index(1){ |value, idx| [idx,value]}]
 puts "#{a}"
-
-
-
-
-
 
 #inject
 
@@ -276,30 +274,53 @@ puts "#{a}"
 a = ["bar","baz","quux"].inject("foo") {|a,b| a + "!!" + b }
 puts a
 
-
-
 a =   (1..8).each_with_object([]) { |n,sq| sq << n*n }.inject(0,:+)
-  puts a
-
-
+puts a
 
 longest = %w{ cat sheep bear }.inject do |a, b|
    a.length > b.length ? a : b
 end
 longest 
 
-
-
-
-  def list_duplicates?(arr)
-	if arr.uniq.length != arr.length
-		a = arr.inject(Hash.new (0)){ |hash, key| hash[key] =+1; hash  }
-		puts "Items Value repeated is #{a}"
-	else
-		puts "Your array has no repeated value #{arr} "
-	end
+fruits = ['apple','banana','pear']
+a = fruits.inject ('')do |memo,fruit|
+memo << fruit[0]
 end
-puts list_duplicates?([3,5,4,3])
 
+a = [:uno, :dos, :tres]
+b = ["one", "two", "three"]
+arr = a.inject({}) do |memo, n|
+  memo[n] = b[a.index(n)]
+  memo
+end
+puts arr
 
+arr = [1,2,3,4,5].inject([]) do |res, a|
+  next res << a*a if a == 2
+  res << a
+end
+puts arr
 
+arr = [[:student, "shaji"], [:course, "ruby"]].inject({}) do |result, element| 
+    result[element.first] = element.last 
+    result
+end
+puts arr
+
+# => Problem #42
+
+def find_most_occurred_item(arr)
+return 'Array has unique elements already' if arr.uniq == arr
+m = Hash.new(0)
+  arr.each do |v|
+  m[v] += 1
+end
+  m.each do |k, v|
+    if v > 1
+      puts "#{k} appears #{v} times"
+    end
+  end
+end
+
+puts find_most_occurred_item([1, 2, 3,4,4,4,3,3,3,3,3,3,3])
+puts find_most_occurred_item([1, 2, 2, 3])

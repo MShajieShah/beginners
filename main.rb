@@ -244,7 +244,7 @@ array = ["a", "b", "c"]
 array.map { |string| string.upcase }
 
 [1,2,3,4,5].map { |a|
-puts  (a == 2) ? a * a : a
+	puts  (a == 2) ? a * a : a
 }
 
 array = [1,2,3,4,5]
@@ -278,7 +278,7 @@ a =   (1..8).each_with_object([]) { |n,sq| sq << n*n }.inject(0,:+)
 puts a
 
 longest = %w{ cat sheep bear }.inject do |a, b|
-   a.length > b.length ? a : b
+	a.length > b.length ? a : b
 end
 longest 
 
@@ -290,37 +290,36 @@ end
 a = [:uno, :dos, :tres]
 b = ["one", "two", "three"]
 arr = a.inject({}) do |memo, n|
-  memo[n] = b[a.index(n)]
-  memo
+	memo[n] = b[a.index(n)]
+	memo
 end
 puts arr
 
 arr = [1,2,3,4,5].inject([]) do |res, a|
-  next res << a*a if a == 2
-  res << a
+	next res << a*a if a == 2
+	res << a
 end
 puts arr
 
 arr = [[:student, "shaji"], [:course, "ruby"]].inject({}) do |result, element| 
-    result[element.first] = element.last 
-    result
+	result[element.first] = element.last 
+	result
 end
 puts arr
 
 # => Problem #42
 
 def find_most_occurred_item(arr)
-return 'Array has unique elements already' if arr.uniq == arr
-m = Hash.new(0)
-  arr.each do |v|
-  m[v] += 1
-end
-  m.each do |k, v|
-    if v > 1
-      puts "#{k} appears #{v} times"
-    end
-  end
+	return 'Array has unique elements already' if arr.uniq == arr
+	m = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+	m.each do |k, v|
+		a = arr.max_by { |v| m[v] }
+		if v > a
+			puts "#{k} appears #{v} times"
+		elsif v == a
+			puts "#{k} appears #{v} times"
+		end	
+	end
 end
 
-puts find_most_occurred_item([1, 2, 3,4,4,4,3,3,3,3,3,3,3])
-puts find_most_occurred_item([1, 2, 2, 3])
+puts find_most_occurred_item([1, 2, 3,4,4,4,3,3])

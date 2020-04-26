@@ -236,16 +236,16 @@ puts "items start with 'b':  #{arr.grep(/^b/)}"
 #Method Map and Inject 
 
 
-array = ["11", "21", "5"]
-array.map { |str| str.to_i }
+a = ["11", "21", "5"]
+a.map { |str| str.to_i }
 
 
-array = ["a", "b", "c"]
-array.map { |string| string.upcase }
+a = ["a", "b", "c"]
+a.map { |str| str.upcase }
 
-[1,2,3,4,5].map { |a|
+[1,2,3,4,5].map do |a|
 	puts  (a == 2) ? a * a : a
-}
+end
 
 array = [1,2,3,4,5]
 a= array.map {|n| n+1}
@@ -254,10 +254,11 @@ puts "#{a}"
 
 
 a = [18, 22, 33, 3, 5, 6] 
-b = [1, 4, 1, 1, 88, 9] 
-c = [18, 22, 3, 3, 50, 6]  
-puts "map method : #{a.map {|num| num > 10 }}"
-puts "map method : #{b.map {|x| x.odd? }}"
+b = [1, 4, 1, 1, 88, 9]   
+x = a.map {|num| num > 10 }
+y = b.map {|x| x.odd? }
+puts "map method : #{e}"
+puts "map method : #{f}"
 
 
 hash = { bacon: "protein", apple: "fruit" }
@@ -265,7 +266,7 @@ hash.map { |k,v| [k, v.to_sym] }
 
 
 nums = [10, 20, 30, 40]
-a = nums.map.with_index(1){ |value, idx| [idx,value]}]
+a = nums.map.with_index(1){ |val, idx| [idx,val]}
 puts "#{a}"
 
 #inject
@@ -323,3 +324,34 @@ def find_most_occurred_item(arr)
 end
 
 puts find_most_occurred_item([1, 2, 3,4,4,4,3,3])
+
+#to_sym
+
+a = :aBcDeF 
+b = :ABCDEF
+c = :"\u{e4 f6 fc}"
+
+puts "Symbol a to_sym form : #{a.to_sym}"
+puts "Symbol b to_sym form : #{b.to_sym}"
+
+puts "Symbol a === form : #{a === b}"
+puts "Symbol b === form : #{b === b}"
+
+puts "Symbol a size form : #{a.size}"
+puts "Symbol b size form : #{b.size}"
+puts "Symbol c size form : #{c.size}"
+
+
+
+#Concatenation
+a = "Nice to meet you"
+b = ", "
+c = "do you like flowers?"
+puts a+b+c
+
+a = "foo"
+b = a
+b << "bar"
+
+puts a
+puts b

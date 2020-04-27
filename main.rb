@@ -311,20 +311,26 @@ puts arr
 # => Problem #42
 
 def find_most_occurred_item(arr)
- return 'Array has unique elements already' if arr.uniq == arr
-  m = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-  m.each do |k, v|
-	a = arr.max_by { |v| m[v] }
-	if v > a
-		puts "#{k} appears #{v} times"
-	elsif v == a
-		puts "#{k} appears #{v} times"
-	end	
- end
+return 'Array has unique elements already' if arr.uniq == arr
+freq_hash = build_frequency_hash(arr)
+max_value = freq_hash.values.max
+keys = obtain_freq_hash_keys(freq_hash, max_value)
+"#{keys} appears #{max_value} times"
+end
+																	#Provided by Moiz
+def build_frequency_hash(arr)
+hash = Hash.new(0)
+arr.each do |value|
+hash[value] += 1
+end
+hash
 end
 
-puts find_most_occurred_item([1, 2, 3,4,4,4,3,3])
+def obtain_freq_hash_keys(freq_hash, max_value)
+freq_hash.select{ |k,v| v == max_value }.keys
+end
 
+puts find_most_occurred_item([1, 2, 3,4,4,4,3,3,3,3])
 #to_sym
 
 a = :aBcDeF 

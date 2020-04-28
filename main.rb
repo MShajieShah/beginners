@@ -361,3 +361,52 @@ b << "bar"
 
 puts a
 puts b
+
+
+#select
+a = [1,2,3,4,5,6,7,8,100]
+puts a.select{|item| item%2==0 }
+
+fruits = {
+  apples: 10,
+  oranges: 5,
+  bananas: 1
+}
+puts fruits.select { |k, v| v > 1 }
+
+
+
+a = %w(apple orange banana)
+puts a.select { |v| v.start_with? "a" }
+
+
+
+puts [1,2,3,4,5,6].select { |n| n != 4 }
+
+
+puts [1,2,3,4,5,6,7].select { |x| x.between?(3,7) } 
+
+
+
+# each with 
+
+puts (1..10).each_with_object([0]) { |i, a| a << i*2 }
+
+
+[:foo, :bar, :jazz].each_with_object({}) do |k|
+   puts k.to_s.upcase
+end
+
+
+
+nums = [1, 1, 2, 3, 3, 5]
+puts nums.each_with_object(Hash.new(0)) { |k, v| v[k] += 1 }
+
+ 
+[42,"hi",:hello].each_with_object({}) do |k, h|
+puts h[k.to_s] = k
+end
+
+
+ ['a', 'b', 'c'].each_with_index { |k, v| puts v }
+

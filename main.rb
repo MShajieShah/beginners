@@ -466,15 +466,15 @@ puts hash_random_value(h)
 # end
 
 def get_array_sum(arr)
-return 'Array is Empty!.' if arr.empty?
-return calculate_sum_before_value_seventeen(arr) if arr.include?(17)
-arr.sum
+ return 'Array is Empty!.' if arr.empty?
+ return calculate_sum_before_value_seventeen(arr) if arr.include?(17)
+ arr.sum
 end
 
 def calculate_sum_before_value_seventeen(arr)
-i = arr.index(17)
-arr.slice!(i..-1)   		# arr.slice!(i..i+1)                  Provided BY Moiz
-arr.sum
+ i = arr.index(17)
+ arr.slice!(i..-1)   		# arr.slice!(i..i+1)                  Provided BY Moiz
+ arr.sum
 end
 
 get_array_sum([])

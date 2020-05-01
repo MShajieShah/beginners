@@ -457,21 +457,34 @@ puts hash_random_value(h)
 
 # => Problem #3: Write a Ruby program to compute the sum of the numbers of a given array except the number 17 and numbers that come immediately after a 17. Return 0 for an empty array.
 
-arr = []
- a = 17
- if arr.empty?
- 	puts "empty array"
- else
-puts arr.reject{ |v| v == a || v == a.next }.sum     
+# arr = []
+#  a = 17
+#  if arr.empty?
+#  	puts "empty array"						written  by Shajie
+#  else
+# puts arr.reject{ |v| v == a || v == a.next }.sum     
+# end
+
+def get_array_sum(arr)
+return 'Array is Empty!.' if arr.empty?
+return calculate_sum_before_value_seventeen(arr) if arr.include?(17)
+arr.sum
 end
 
-# arr = [1,2,3,4,17,1,3]
+def calculate_sum_before_value_seventeen(arr)
+i = arr.index(17)
+arr.slice!(i..-1)   		# arr.slice!(i..i+1)                  Provided BY Moiz
+arr.sum
+end
 
-#  if arr.empty?
-#  	puts "empty array"
-#  else
-# a = 17
-# b = [arr.find_index(a)+1]
-# c = [arr.find_index(a)]
-#  puts arr.reject.each_with_index { |e, i| b.include? i || c.include? i }.sum
-# end
+get_array_sum([])
+get_array_sum([1,2,3])
+get_array_sum([1,2,3,17,3,4])
+
+
+ # Random Examples
+puts rand()
+puts rand(-100)
+puts 10.times.map { rand(10) }
+puts rand(5.0..9.0)
+puts rand(2) == 1

@@ -197,21 +197,21 @@ puts check_duplicates?([3, 8, 5, 4, 3, 7]) ## not cover after adjacent elements
 #Write a Ruby program to convert an array into an index hash.
 nums = [10, 20, 30, 40]
 puts "Original array: #{nums}"
-puts "Index Hash: #{nums.map.with_index(1) { |int, idx| [idx, int]} }"
+puts "Index Hash: "
+a = Hash[nums.map.with_index(1){ |value, idx| [idx,value]}]
+puts "#{a}"
 
 # => Problem #43
 #Write a Ruby program to find most occurred item in a given array.
 def list_duplicates?(arr)
-
-	if	arr.uniq.length != arr.length
+	if arr.uniq.length != arr.length
 		a = arr.select { |e| arr.count(e) > 1 }
-		puts "Items reoccured #{a.uniq}"
+		puts "Items Value repeated is #{a.uniq} by #{a.count} times"
 	else
-		puts "Already sorted #{arr}"
-
+		puts "Your array has no repeated value#{arr}"
 	end
 end
-puts list_duplicates?([3, 5, 4 ])
+puts list_duplicates?([3,5,4])
 
 
 # 	Problem #48
@@ -229,3 +229,262 @@ puts "Original array: #{arr}"
 puts "items start with 'ab':  #{arr.grep(/^ab/)}"
 puts "items start with 'b':  #{arr.grep(/^b/)}"
 
+
+
+
+
+#Method Map and Inject 
+
+
+a = ["11", "21", "5"]
+a.map { |str| str.to_i }
+
+
+a = ["a", "b", "c"]
+a.map { |str| str.upcase }
+
+[1,2,3,4,5].map do |a|
+	puts  (a == 2) ? a * a : a
+end
+
+array = [1,2,3,4,5]
+a= array.map {|n| n+1}
+puts "#{array}"
+puts "#{a}"
+
+
+a = [18, 22, 33, 3, 5, 6] 
+b = [1, 4, 1, 1, 88, 9]   
+x = a.map {|num| num > 10 }
+y = b.map {|x| x.odd? }
+puts "map method : #{e}"
+puts "map method : #{f}"
+
+
+hash = { bacon: "protein", apple: "fruit" }
+hash.map { |k,v| [k, v.to_sym] }
+
+
+nums = [10, 20, 30, 40]
+a = nums.map.with_index(1){ |val, idx| [idx,val]}
+puts "#{a}"
+
+#inject
+
+
+a = ["bar","baz","quux"].inject("foo") {|a,b| a + "!!" + b }
+puts a
+
+a =   (1..8).each_with_object([]) { |n,sq| sq << n*n }.inject(0,:+)
+puts a
+
+longest = %w{ cat sheep bear }.inject do |a, b|
+	a.length > b.length ? a : b
+end
+longest 
+
+fruits = ['apple','banana','pear']
+a = fruits.inject ('')do |memo,fruit|
+memo << fruit[0]
+end
+
+a = [:uno, :dos, :tres]
+b = ["one", "two", "three"]
+arr = a.inject({}) do |memo, n|
+	memo[n] = b[a.index(n)]
+	memo
+end
+puts arr
+
+arr = [1,2,3,4,5].inject([]) do |res, a|
+	next res << a*a if a == 2
+	res << a
+end
+puts arr
+
+arr = [[:student, "shaji"], [:course, "ruby"]].inject({}) do |result, element| 
+	result[element.first] = element.last 
+	result
+end
+puts arr
+
+# => Problem #42
+
+def find_most_occurred_item(arr)
+return 'Array has unique elements already' if arr.uniq == arr
+freq_hash = build_frequency_hash(arr)
+max_value = freq_hash.values.max
+keys = obtain_freq_hash_keys(freq_hash, max_value)
+"#{keys} appears #{max_value} times"
+end
+																	#Provided by Moiz
+def build_frequency_hash(arr)
+hash = Hash.new(0)
+arr.each do |value|
+hash[value] += 1
+end
+hash
+end
+
+def obtain_freq_hash_keys(freq_hash, max_value)
+freq_hash.select{ |k,v| v == max_value }.keys
+end
+
+puts find_most_occurred_item([1, 2, 3,4,4,4,3,3,3,3])
+#to_sym
+
+a = :aBcDeF 
+b = :ABCDEF
+c = :"\u{e4 f6 fc}"
+
+puts "Symbol a to_sym form : #{a.to_sym}"
+puts "Symbol b to_sym form : #{b.to_sym}"
+
+puts "Symbol a === form : #{a === b}"
+puts "Symbol b === form : #{b === b}"
+
+puts "Symbol a size form : #{a.size}"
+puts "Symbol b size form : #{b.size}"
+puts "Symbol c size form : #{c.size}"
+
+
+
+#Concatenation
+a = "Nice to meet you"
+b = ", "
+c = "do you like flowers?"
+puts a+b+c
+
+a = "foo"
+b = a
+b << "bar"
+
+puts a
+puts b
+
+
+#select
+a = [1,2,3,4,5,6,7,8,100]
+puts a.select{|item| item%2==0 }
+
+fruits = {
+  apples: 10,
+  oranges: 5,
+  bananas: 1
+}
+puts fruits.select { |k, v| v > 1 }
+
+
+
+a = %w(apple orange banana)
+puts a.select { |v| v.start_with? "a" }
+
+
+
+puts [1,2,3,4,5,6].select { |n| n != 4 }
+
+
+puts [1,2,3,4,5,6,7].select { |x| x.between?(3,7) } 
+
+
+
+# each with 
+
+puts (1..10).each_with_object([0]) { |i, a| a << i*2 }
+
+
+[:foo, :bar, :jazz].each_with_object({}) do |k|
+   puts k.to_s.upcase
+end
+
+
+
+nums = [1, 1, 2, 3, 3, 5]
+puts nums.each_with_object(Hash.new(0)) { |k, v| v[k] += 1 }
+
+ 
+[42,"hi",:hello].each_with_object({}) do |k, h|
+puts h[k.to_s] = k
+end
+
+
+ ['a', 'b', 'c'].each_with_index { |k, v| puts v }
+
+
+#Ruby Array - Selection
+# https://www.hackerrank.com/challenges/ruby-array-selection/problem
+
+def select_arr(arr)
+  arr.select { |x| x.odd? }
+end
+
+def reject_arr(arr)
+  arr.reject { |y| y%3 == 0 }
+end
+
+def delete_arr(arr)
+  arr.delete_if {|a| a < 0}
+end
+
+def keep_arr(arr)
+  arr.keep_if {|a| a >= 0}
+end
+
+puts select_arr ([1, 2, 3,4,4,4,3,3,3,3])
+puts reject_arr ([1,2,3,4,1,5,2,6,7,8,9,10,7,11,12,13,14,15])
+puts delete_arr ([-7,-11,-12,13,14,15])
+puts keep_arr ([-7,-11,-12,13,14,15])
+
+
+# Extract a Random Element from a Collection of Arrays Nested in a Hash
+# https://www.crondose.com/2017/01/ruby-coding-exercise-extract-random-element-collection-arrays-nested-hash/
+
+h = { 'appetizers': ['Chips', 'Quesadillas', 'Flatbread'],
+   'entrees': ['Steak', 'Chicken', 'Lobster'],
+   'dessers': ['Cheesecake', 'Cake', 'Cupcake'] }
+
+def hash_random_value(h)
+  i = rand(h.length)
+  h.each_with_index do |(k, v), a|
+     if i == a
+     	return v.sample
+     end
+  end
+end
+puts hash_random_value(h)
+
+
+
+# => Problem #3: Write a Ruby program to compute the sum of the numbers of a given array except the number 17 and numbers that come immediately after a 17. Return 0 for an empty array.
+
+# arr = []
+#  a = 17
+#  if arr.empty?
+#  	puts "empty array"						written  by Shajie
+#  else
+# puts arr.reject{ |v| v == a || v == a.next }.sum     
+# end
+
+def get_array_sum(arr)
+ return 'Array is Empty!.' if arr.empty?
+ return calculate_sum_before_value_seventeen(arr) if arr.include?(17)
+ arr.sum
+end
+
+def calculate_sum_before_value_seventeen(arr)
+ i = arr.index(17)
+ arr.slice!(i..-1)   		# arr.slice!(i..i+1)                  Provided BY Moiz
+ arr.sum
+end
+
+get_array_sum([])
+get_array_sum([1,2,3])
+get_array_sum([1,2,3,17,3,4])
+
+
+ # Random Examples
+puts rand()
+puts rand(-100)
+puts 10.times.map { rand(10) }
+puts rand(5.0..9.0)
+puts rand(2) == 1

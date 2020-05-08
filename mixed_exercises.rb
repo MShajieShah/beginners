@@ -75,8 +75,7 @@ puts  oldest({
 # https://edabit.com/challenge/vs6Dgh4DiSMiPFGhF
 require 'date'
 def get_day(day)
-Date.strptime(day, '%m/%d/%Y').strftime('%A')
-
+  Date.strptime(day, '%m/%d/%Y').strftime('%A')
 end
 puts get_day("12/07/2016")
 

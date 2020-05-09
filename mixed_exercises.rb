@@ -75,16 +75,33 @@ puts  oldest({
 # https://edabit.com/challenge/vs6Dgh4DiSMiPFGhF
 require 'date'
 def get_day(day)
-Date.strptime(day, '%m/%d/%Y').strftime('%A')
-
+ Date.strptime(day, '%m/%d/%Y').strftime('%A')
 end
 puts get_day("12/07/2016")
 
-
-#problem #9
-# https://edabit.com/challenge/hMWMeBp4Pgquww9nm
-def find_perimeter(h, w)
-  (h+w) * 2
+#problem 9
+# https://edabit.com/challenge/gXotyfnw7WCxoCHTC
+def daily_streak(arr)
+  if arr.include?(true)
+    arr.join("").split('false').map {|p| p.count("t")}.max
+  else 
+    return 0
+  end
 end
+puts daily_streak([true, true, false, true])
+puts daily_streak([false, false, false])
 
-puts find_perimeter(20, 10)
+#problem 10
+  # https://gist.github.com/pinkopaque22/cc4f94bd23dc33d41257
+def merge_us(a,b)
+ a.merge(b) 
+end
+ puts   merge_us({ name: "Computer", cost: "$1,000" } ,
+  { first_name: "Bob", age: 34 })
+
+
+def my_keys(a)
+ a.map{|k,v| k}
+end
+puts my_keys({ name: "Computer", cost: "$1,000" })
+

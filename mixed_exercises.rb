@@ -105,3 +105,30 @@ def my_keys(a)
 end
 puts my_keys({ name: "Computer", cost: "$1,000" })
 
+
+def do_i_have?(h)
+ a = { name: "Computer", cost: "$1,000" }
+  h.all? {|k| a.key? k}
+end
+puts do_i_have?([:cost ,:name])
+
+
+
+# https://edabit.com/challenge/mmyJ7SkFErvJTrjuu
+def sum_arr(h)
+  k = []
+  h.each_with_index { |e, i| k[i] = e[0] * e[1]}
+  sum = 0
+  k.each { |e| sum += e }
+  
+  return sum
+end
+
+def test_fairness(a,b)
+  
+  return sum_arr(a) == sum_arr(b)
+  
+end
+
+puts test_fairness(  [[1, 2], [2, 1]] , 
+  [[2, 2]] )

@@ -151,7 +151,7 @@ def antipodes_average(arr)
   n = []
   a = (arr.size) / 2
   arr.delete_at(a)
-  arr = arr.each_slice(indexToRemove).to_a
+  arr = arr.each_slice(a).to_a
   a = arr[1].reverse
   arr.delete_at(1)
   arr = arr.push(a)

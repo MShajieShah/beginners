@@ -105,3 +105,58 @@ def my_keys(a)
 end
 puts my_keys({ name: "Computer", cost: "$1,000" })
 
+
+def do_i_have?(h)
+ a = { name: "Computer", cost: "$1,000" }
+  h.all? {|k| a.key? k}
+end
+puts do_i_have?([:cost ,:name])
+
+
+
+# https://edabit.com/challenge/mmyJ7SkFErvJTrjuu
+def sum_arr(h)
+  k = []
+  h.each_with_index { |e, i| k[i] = e[0] * e[1]}
+  sum = 0
+  k.each { |e| sum += e }
+  
+  return sum
+end
+
+def test_fairness(a,b)
+  
+  return sum_arr(a) == sum_arr(b)
+  
+end
+
+puts test_fairness(  [[1, 2], [2, 1]] , 
+  [[2, 2]] )
+
+
+# https://edabit.com/challenge/oubiQ6aJo7Da2t8XH
+
+def power_morphic(a,b) 
+  c = (a**b).to_i
+  puts c
+  if a == c.abs % 10
+   return true
+ else false
+ end
+end
+puts power_morphic(4,9)
+
+# https://edabit.com/challenge/vY4SjdRr7Mu2zJFeQ
+def antipodes_average(arr)
+  n = []
+  a = (arr.size) / 2
+  arr.delete_at(a)
+  arr = arr.each_slice(indexToRemove).to_a
+  a = arr[1].reverse
+  arr.delete_at(1)
+  arr = arr.push(a)
+  arr.each_with_index {|v, i| ((v + i)/ 2.0) }
+end
+
+
+puts antipodes_average([1,2,3,4,5])

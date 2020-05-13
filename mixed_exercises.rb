@@ -136,27 +136,38 @@ puts test_fairness(  [[1, 2], [2, 1]] ,
 
 # https://edabit.com/challenge/oubiQ6aJo7Da2t8XH
 
-def power_morphic(a,b) 
-  c = (a**b).to_i
-  puts c
-  if a == c.abs % 10
-   return true
- else false
- end
+def is_automorphic?(a,b)
+   if (a**b).to_s.end_with?(a.to_s)
+    return true
+   end
 end
-puts power_morphic(4,9)
+
+def power_morphic(num)
+  c = (2..10).count { |n| is_automorphic?(num, n) }
+  case c
+    when 9
+      "Polymorphic"
+    when 4
+      "Quadrimorphic"
+    when 2
+      "Dimorphic"
+    when 1
+      "Enamorphic"
+    when 0
+      "Amorphic"
+  end
+end
+
+puts power_morphic(10)
+
 
 # https://edabit.com/challenge/vY4SjdRr7Mu2zJFeQ
 def antipodes_average(arr)
-  n = []
-  a = (arr.size) / 2
-  arr.delete_at(a)
-  arr = arr.each_slice(a).to_a
-  a = arr[1].reverse
-  arr.delete_at(1)
-  arr = arr.push(a)
-  arr.each_with_index {|v, i| ((v + i)/ 2.0) }
+  pos = arr.size / 2
+  a = arr.first(pos)
+  b = arr.last(pos).reverse
+  c = [arr[pos],arr[pos]]
+  (0..a.size-1).map{|i| (a[i] + b[i])/2.0}
 end
-
 
 puts antipodes_average([1,2,3,4,5])

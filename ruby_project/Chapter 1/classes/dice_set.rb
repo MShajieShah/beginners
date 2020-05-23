@@ -1,8 +1,4 @@
 class DiceSet
-  
-  # optional:
-  # attr_reader :dice_array
-  
   def initialize
     @dice_array = [Dice.new, Dice.new]
   end

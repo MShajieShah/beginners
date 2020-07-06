@@ -1,8 +1,8 @@
 class Capture
  attr_accessor :qC, :oC , :qR , :oR
 def initialize(s)
-	@qC = s[0][0].to_i 
-	@oC = s[1][0].to_i 
+	@qC = s[0][0].bytes[0].to_i
+	@oC = s[1][0].bytes[0].to_i 
 	@qR = s[0][1].to_i
 	@oR = s[1][1].to_i
 end

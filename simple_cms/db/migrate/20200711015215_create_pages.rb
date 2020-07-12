@@ -6,6 +6,9 @@ class CreatePages < ActiveRecord::Migration[6.0]
       t.integer :subject_id, index:true
       t.string :name
       t.string :permalink
+      t.string :position
+      t.boolean :visible
+      t.string :content
 
       t.timestamps
     end

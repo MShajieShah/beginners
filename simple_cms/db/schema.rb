@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2020_07_11_015215) do
     t.integer "subject_id"
     t.string "name"
     t.string "permalink"
+    t.string "position"
+    t.boolean "visible"
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["subject_id"], name: "index_pages_on_subject_id"

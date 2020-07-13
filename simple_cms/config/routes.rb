@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'demo/hello'
   get 'demo/about'
   get 'demo/contact'
-
   resources :subjects do
     member do
       get :delete
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
       get :delete
     end
   end
+
   # get 'pages/index'
   # get 'pages/show'
   # get 'pages/new'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # get 'subjects/new'
   # get 'subjects/edit'
   # get 'subjects/delete'
-  #
+
   #default route
   # get ':controller(/:action(/:id))'
 
